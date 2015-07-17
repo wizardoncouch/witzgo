@@ -1,58 +1,53 @@
-<!-- LOGIN FORM -->
-<div class="text-center" style="padding:50px 0">
-    <!-- Main Form -->
-    <div class="row auth-form-wrapper">
-        <div class="auth-title"><i class="fa fa-user-plus"></i> Sign Up</div>
-        <hr/>
+<div class="auth-form-wrapper">
+    <div class="auth-title"><i class="fa fa-pencil"></i> Sign Up</div>
+    <hr/>
+    <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-6 login-group text-left">
 
-            <form id="login-form" class="text-left">
-                <div class="login-form-main-message"></div>
-                <div class="main-login-form">
-                    <div class="login-group">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="first name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="last name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="confirm password">
-                        </div>
-                        <div class="form-group login-group-checkbox">
-                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
-                            <label for="male">male</label>
-                            <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
-                            <label for="female">female</label>
-                        </div>
-
-                        <div class="form-group login-group-checkbox">
-                            <input type="checkbox" class="" id="reg_agree" name="reg_agree">
-                            <label for="reg_agree">i agree the <a href="#">terms</a></label>
-                        </div>
-                    </div>
-                    <button type="submit" class="login-button"><i class="fa fa-user-plus"></i></button>
+            <div class="login-form-main-message"></div>
+            <div class="main-login-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="first name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="last name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="password">
+                </div>
+                <div class="form-group login-group-checkbox">
+                    <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
+                    <label for="male">male</label>
+                    <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
+                    <label for="female">female</label>
+                </div>
+                <div class="margin-ten-zero">
+                    <button type="button" class="btn btn-block btn-social btn-success margin-five-zero">
+                        <i class="fa fa-pencil"></i> Sign Up
+                    </button>
+                </div>
+                <div class="margin-five-zero">
+                    <p>By clicking "Sign Up" or "Sign In with Facebok" I acknowlege and agree to the <a
+                            href="#!/terms">Terms of Use</a> and <a href="#!/privacy-policy">Privacy Policy</a>.
+                    </p>
                 </div>
                 <div class="etc-login-form font-twelve">
                     <p class="nowrap">already have an account? <a href="#!/signin">sign in</a></p>
                 </div>
-            </form>
+            </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 login-group">
 
-            <p>or</p>
+            <p class="font-eighteen bold text-center">or</p>
 
-            <a class="btn btn-block btn-social btn-facebook social">
+            <button type="button" class="btn btn-block btn-social btn-facebook">
                 <i class="fa fa-facebook"></i> Sign in with Facebook
-            </a>
+            </button>
         </div>
     </div>
-    <!-- end:Main Form -->
 </div>
+<!-- end:Main Form -->

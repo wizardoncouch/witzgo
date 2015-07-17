@@ -42,11 +42,26 @@ video#bgvid {
 .font-twelve {
   font-size: 12px;
 }
+.font-sixteen{
+  font-size:16px;
+}
+.font-eighteen{
+  font-size:18px;
+}
+.font-twenty{
+  font-size:20px;
+}
+.bold{
+  font-weight: bold;
+}
 
 .border {
   border: 1px solid red;
 }
 
+.margin-ten-zero {
+  margin: 10px 0;
+}
 .margin-five-zero {
   margin: 5px 0;
 }
@@ -75,14 +90,14 @@ video#bgvid {
 .auth-title {
   padding: 15px 0;
   font-size: 30px;
-  color: #aaaaaa;
+  color: #999999;
   font-family: Comfortaa, Lato, Tahoma, Verdana;
 }
 
 /*=== 3. Text Outside the Box ===*/
 .auth-form-wrapper .etc-login-form {
   color: #919191;
-  padding: 10px 20px;
+  padding: 10px 0;
 }
 
 .auth-form-wrapper .etc-login-form p {
@@ -93,16 +108,13 @@ video#bgvid {
 .auth-form-wrapper {
   max-width: 700px;
   border-radius: 5px;
-  display: inline-block;
   background: rgba(white, 0.9);
 
   //    border: 1px solid #e7e7e7;
   padding: 20px;
+  margin:0 auto;
 }
 
-.auth-form-wrapper .main-login-form {
-  position: relative;
-}
 
 .auth-form-wrapper .form-control {
   border: 0;
@@ -128,8 +140,6 @@ video#bgvid {
 .auth-form-wrapper .form-group {
   margin-bottom: 0;
   border-bottom: 1px solid #bbbbbb;
-  padding-right: 20px;
-  position: relative;
 }
 
 .auth-form-wrapper .form-group:last-child {
@@ -138,7 +148,7 @@ video#bgvid {
 
 .login-group {
   color: #999999;
-  padding: 10px 20px;
+  min-width: 250px;
 }
 
 .login-group-checkbox {
@@ -146,39 +156,28 @@ video#bgvid {
 }
 
 /*=== 5. Login Button ===*/
-.auth-form-wrapper .login-button {
-  position: absolute;
-  right: -25px;
-  top: 50%;
-  background: #228b22; //#ffffff;
-  color: #ffffff; //#999999;
-  padding: 11px 0;
-  width: 50px;
-  height: 50px;
-  margin-top: -25px;
-  border: 5px solid #55A355;
-  border-radius: 50%;
+.auth-form-wrapper button{
+  color: #ffffff;
   transition: all ease-in-out 500ms;
 }
 
-.auth-form-wrapper .login-button:hover {
-  color: #555555;
-//  transform: rotate(450deg);
+.auth-form-wrapper button:hover {
+  color: #999999;
 }
 
-.auth-form-wrapper .login-button.clicked {
-  color: #555555;
+.auth-form-wrapper button.clicked {
+  color: #999999;
 }
 
-.auth-form-wrapper .login-button.clicked:hover {
+.auth-form-wrapper button.clicked:hover {
   transform: none;
 }
 
-.auth-form-wrapper .login-button.clicked.success {
+.auth-form-wrapper button.clicked.success {
   color: #2ecc71;
 }
 
-.auth-form-wrapper .login-button.clicked.error {
+.auth-form-wrapper button.clicked.error {
   color: #e74c3c;
 }
 
