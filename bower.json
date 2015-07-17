@@ -1,0 +1,26 @@
+{
+  "name": "witzgo",
+  "version": "0.0.0",
+  "authors": [
+    "Alex Culango <wizardoncouch@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.5",
+    "fontawesome": "~4.3.0",
+    "director": "~1.2.8",
+    "vue": "~0.12.7",
+    "vue-resource": "~0.1.10",
+    "bootstrap-social": "~4.9.1"
+  }
+}
