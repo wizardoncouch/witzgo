@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="witzgo, adventure sharing, backpackers">
+    <meta name="description" content="witzgo, adventure sharing, share or plan your adventures with others, backpackers">
     <meta name="author" content="Alex Culango">
+    <meta name="fragment" content="!">
     <link rel="icon" href="favicon.ico">
 
     <title>witzgo</title>
