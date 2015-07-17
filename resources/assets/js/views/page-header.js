@@ -15,7 +15,7 @@ module.exports = {
     },
     components: {
         'logo': {
-            template: '<a class="navbar-brand" href="#" style="font-family: Comfortaa, Lato, Tahoma, Verdana; font-size: 30px; font-weight:bold; text-shadow: 4px 4px 4px #aaa;">witz<span style="color:forestgreen;">go</span></a>'
+            template: require('./logo.template.html')
         }
     },
     template: require('./page-header.template.html'),

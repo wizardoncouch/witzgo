@@ -5,5 +5,6 @@
 
 
 module.exports = {
-    template: require('./wall.template.html')
+    template: require('./wall.template.html'),
+
 }

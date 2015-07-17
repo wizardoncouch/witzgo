@@ -17,10 +17,7 @@
 
 </head>
 <body>
-<video autoplay loop poster="images/poster.jpg" id="bgvid">
-    <source src="images/background.webm" type="video/webm">
-    <source src="images/background.mp4" type="video/mp4">
-</video>
+<background v-if="showbackground"></background>
 <page-header view="{{ view }}" sub-view="{{ subView }}"></page-header>
 <div class="container">
     <component is="{{ view }}"></component>
