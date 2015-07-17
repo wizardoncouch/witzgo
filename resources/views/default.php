@@ -17,11 +17,12 @@
 
 </head>
 <body>
-<background v-if="showbackground"></background>
+<background></background>
 <page-header view="{{ view }}" sub-view="{{ subView }}"></page-header>
 <div class="container">
-    <component is="{{ view }}"></component>
+    <component is="{{ view }}" sub-view="{{ subView }}"></component>
 </div>
+<page-footer date="<?php echo date('Y'); ?>"></page-footer>
 <script src="js/vendor.js"></script>
 <script src="js/default.js"></script>
 </body>

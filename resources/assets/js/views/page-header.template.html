@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
+            <button type="button" v-on="click: toggle=true" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar"
+                    aria-expanded="false" aria-haspopup="true" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -25,16 +26,19 @@
             </div>
             <div class="col-md-3 col-md-pull-4">
                 <ul class="nav navbar-nav">
-                    <li v-class="isActive('wall-view')"><a href="#/wall"><i class="fa fa-home"></i> &nbsp; Wall</a></li>
-                    <li class="dropdown" v-class="isActive('popular-view')">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <li v-class="active: view == 'wall-view'"><a href="#!/wall"><i class="fa fa-home"></i> &nbsp;
+                        Wall</a></li>
+                    <li v-class="active: view == 'popular-view'" class="dropdown" v-class="isActive('popular-view')">
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false"><i class="fa fa-star"></i> &nbsp; Popular <span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#/popular/groups"><i class="fa fa-users"></i> &nbsp; Groups</a></li>
-                            <li><a href="#/popular/itineraries"><i class="fa fa-list-alt"></i> &nbsp; Itineraries</a>
-                            </li>
-                            <li><a href="#/popular/destinations"><i class="fa fa-globe"></i> &nbsp; Destinations</a>
+                            <li v-class="active: subView == 'groups-view'"><a href="#!/popular/groups"><i
+                                    class="fa fa-users"></i> &nbsp; Groups</a></li>
+                            <li v-class="active: subView == 'itineraries-view'"><a href="#!/popular/itineraries"><i
+                                    class="fa fa-list-alt"></i> &nbsp; Itineraries</a></li>
+                            <li v-class="active: subView == 'destinations-view'"><a href="#!/popular/destinations"><i
+                                    class="fa fa-globe"></i> &nbsp; Destinations</a>
                             </li>
                         </ul>
                     </li>
@@ -44,8 +48,10 @@
 
             <div class="col-md-3">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/signup"><i class="fa fa-user-plus"></i> Sign Up</a></li>
-                    <li><a href="#/signin"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                    <li v-class="active: view == 'signup-view'"><a href="#!/signup"><i class="fa fa-user-plus"></i> Sign
+                        Up</a></li>
+                    <li v-class="active: view == 'signin-view'"><a href="#!/signin"><i class="fa fa-sign-in"></i> Sign
+                        In</a></li>
                 </ul>
             </div>
         </div>

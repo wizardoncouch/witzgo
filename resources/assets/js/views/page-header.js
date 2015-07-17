@@ -10,8 +10,20 @@ module.exports = {
         view: String,
         subView: String
     },
-    ready: function () {
-        console.log(this.subView);
+    ready:function(){
+        var self = this;
+        $('.nav a').click(function(){
+            if(!$(this).hasClass('dropdown-toggle') && self.toggle == true){
+                $(".navbar-toggle").click();
+                self.toggle = false;
+            }
+        });
+    },
+
+    data: function () {
+        return {
+            toggle: false
+        }
     },
     components: {
         'logo': {
@@ -22,10 +34,6 @@ module.exports = {
     methods: {
         isLoggedIn: function () {
             return false;
-        },
-        isActive: function (view) {
-            console.log(this.view);
-            return this.view == view ? 'active' : '';
         },
         hideNavigation: function () {
             //alert(this.current_view);
