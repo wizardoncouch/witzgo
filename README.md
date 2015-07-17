@@ -1,2 +1,2 @@
 # wiztgo
-wiztgo - a website where you can share adventure to others
+Share or Plan your adventures with others. Bringing people together and have fun.
