@@ -4,39 +4,39 @@
  */
 
 module.exports = {
-    props: {
-        logged: Boolean,
-        authorization: String,
-        view: String,
-        subView: String
-    },
-    ready:function(){
-        var self = this;
-        $('.nav a').click(function(){
-            if(!$(this).hasClass('dropdown-toggle') && self.toggle == true){
-                $(".navbar-toggle").click();
-                self.toggle = false;
-            }
-        });
-    },
-
-    data: function () {
-        return {
-            toggle: false
-        }
-    },
+    inherit: true,
     components: {
-        'logo': {
-            template: require('./logo.template.html')
-        }
+        'default': require('./default-header'),
+        'user': require('./user-header')
     },
     template: require('./page-header.template.html'),
-    methods: {
-        isLoggedIn: function () {
-            return false;
-        },
-        hideNavigation: function () {
-            //alert(this.current_view);
+    ready: function () {
+        var self = this;
+        var token = Cookies.get('authorization');
+        if (token) {
+            $.ajax({
+                url: '/api/1.0/auth/user',
+                method: 'GET',
+                data: {'username': self.user.username},
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+                }
+            }).done(function (result) {
+                self.isLogged = true;
+                self.user = result;
+            });
+        }
+        else {
+            self.isLogged = false;
+            if (self.user.username) {
+                $.ajax({
+                    url: '/api/1.0/auth/user',
+                    method: 'GET',
+                    data: {'username': self.user.username}
+                }).done(function (result) {
+                    self.user = result;
+                });
+            }
         }
     }
 }

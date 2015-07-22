@@ -2,6 +2,7 @@
 /node_modules
 /public/images/background.*
 /public/uploads
+/public/build
 .idea
 .env.*
 .env

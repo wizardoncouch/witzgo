@@ -20,7 +20,8 @@ class UserTableSeeder extends Seeder
                 'password'   => Hash::make('0-sum!'),
                 'active'     => 1,
                 'first_name' => 'Footless',
-                'last_name'  => 'Hero'
+                'last_name'  => 'Hero',
+                'gender'     => 'm'
             ],
             [
                 'email'      => 'wizardoncouch@gmail.com',
@@ -28,7 +29,8 @@ class UserTableSeeder extends Seeder
                 'password'   => Hash::make('0-sum!'),
                 'active'     => 1,
                 'first_name' => 'Wizard',
-                'last_name'  => 'Couch'
+                'last_name'  => 'Couch',
+                'gender'     => 'f'
             ]
         ]);
     }

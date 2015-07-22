@@ -1,0 +1,64 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header text-center" v-class="no-float: !withNav">
+            <button type="button" v-if="withNav" v-on="click: toggle=true" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar"
+                    aria-expanded="false" aria-haspopup="true" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/wall" title="witzgo" class="hidden-xs visible-lg" v-class="margin-top-negative-ten: !withNav" v-class="navbar-brand: withNav">
+                <img class="margin-top-eight-zero" v-attr="src: logo" height="40px"/>
+            </a>
+            <a href="/wall" title="witzgo" class="hidden-lg visible-xs" class="margin-top-negative-ten">
+                <img class="margin-top-eight-zero" src="/images/logo-title.png" height="40px"/>
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" v-if="withNav">
+            <div class="col-md-4 col-md-push-3">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <div class="input-group margin-top-eight-zero">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" id="search"
+                                   placeholder="Search in Groups, Destinations, etc...">
+                        </div>
+
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-3 col-md-pull-4">
+                <ul class="nav navbar-nav margin-top-five-zero">
+                    <li v-class="active: view == 'wall'"><a href="/wall"><i class="fa fa-home"></i> &nbsp;
+                        Wall</a></li>
+                    <li v-class="active: view == 'browse'" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><i class="fa fa-star"></i> &nbsp; Browse <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li v-class="active: sub == 'groups'"><a href="/browse/groups"><i
+                                    class="fa fa-users"></i> &nbsp; Groups</a></li>
+                            <li v-class="active: sub == 'itineraries'"><a href="/browse/itineraries"><i
+                                    class="fa fa-list-alt"></i> &nbsp; Itineraries</a></li>
+                            <li v-class="active: sub == 'destinations'"><a href="/browse/destinations"><i
+                                    class="fa fa-globe"></i> &nbsp; Destinations</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-3">
+                <ul class="nav navbar-nav navbar-right margin-top-five-zero">
+                    <li><a href="/signin"><i class="fa fa-sign-in"></i> Sign
+                        In</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>

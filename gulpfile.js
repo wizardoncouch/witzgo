@@ -14,11 +14,11 @@ var elixir = require('laravel-elixir');
 var paths = {
     'jquery': './vendor/bower_components/jquery/',
     'vue': './vendor/bower_components/vue/',
-    'resource': './vendor/bower_components/vue-resource/',
-    'director': './vendor/bower_components/director/',
     'bootstrap': './vendor/bower_components/bootstrap-sass-official/assets/',
     'fontawesome': './vendor/bower_components/fontawesome/',
-    'social': './vendor/bower_components/bootstrap-social/'
+    'social': './vendor/bower_components/bootstrap-social/',
+    'cookies': './vendor/bower_components/cookies-js/'
+
 }
 
 elixir(function (mix) {
@@ -29,8 +29,7 @@ elixir(function (mix) {
             paths.jquery + "dist/jquery.js",
             paths.bootstrap + "javascripts/bootstrap.js",
             paths.vue + "dist/vue.js",
-            paths.resource + "dist/vue-resource.js",
-            paths.director + "build/director.js",
+            paths.cookies + "dist/cookies.js",
             "resources/assets/js/ie10-viewport-bug-workaround.js"
         ], 'public/js/vendor.js', './')
         .browserify('default.js', 'public/js/default.js')

@@ -7,17 +7,21 @@
 
             <div class="login-form-main-message"></div>
             <div class="main-login-form">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="first name">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" placeholder="first name" required autofocus>
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="last name">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" placeholder="last name" required>
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="email">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="email" class="form-control" placeholder="email" required>
                 </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="password">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control" placeholder="password" required>
                 </div>
                 <div class="form-group login-group-checkbox">
                     <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
@@ -30,13 +34,8 @@
                         <i class="fa fa-pencil"></i> Sign Up
                     </button>
                 </div>
-                <div class="margin-five-zero">
-                    <p>By clicking "Sign Up" or "Sign In with Facebok" I acknowlege and agree to the <a
-                            href="#!/terms">Terms of Use</a> and <a href="#!/privacy-policy">Privacy Policy</a>.
-                    </p>
-                </div>
-                <div class="etc-login-form font-twelve">
-                    <p class="nowrap">already have an account? <a href="#!/signin">sign in</a></p>
+                <div class="etc-login-form">
+                    <p class="nowrap">already have an account? <a href="/signin">sign in</a></p>
                 </div>
             </div>
         </div>
@@ -44,9 +43,16 @@
 
             <p class="font-eighteen bold text-center">or</p>
 
-            <button type="button" class="btn btn-block btn-social btn-facebook">
-                <i class="fa fa-facebook"></i> Sign in with Facebook
-            </button>
+            <div>
+                <button type="button" class="btn btn-block btn-social btn-facebook">
+                    <i class="fa fa-facebook"></i> Sign in with Facebook
+                </button>
+            </div>
+            <div class="margin-fifty-zero">
+                <p>By clicking "Sign Up" or "Sign In with Facebok" I acknowlege and agree to the <a
+                        href="/terms">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.
+                </p>
+            </div>
         </div>
     </div>
 </div>
