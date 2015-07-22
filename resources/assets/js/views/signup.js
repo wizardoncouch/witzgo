@@ -31,40 +31,54 @@ module.exports = {
             if (this.hasError === false) {
                 var self = this;
                 $.ajax({
-                    url: '/api/1.0/auth/signup',
+                    url: '/api/1.0/auth/register',
                     method: 'POST',
-                    data: self.signup
+                    data: self.register
                 }).done(function (result) {
-                    window.location.href = '/' + result.username;
+                    self.success = true;
+                    self.register = {
+                        first_name: '',
+                        last_name: '',
+                        email: '',
+                        password: ''
+                    };
+                    self.response = 'Please check your email. We send you an activation link.';
                 }).fail(function (xhr) {
                     self.hasError = true;
+                    self.register.password = '';
                     var response = xhr.responseJSON;
-                    for(var i in response){
+                    for (var i in response) {
                         self.errors.push(response[i]);
                     }
                 });
             }
-
         },
         validate:function(){
             this.errors = [];
             this.hasError = false;
-            var pattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-            if (this.signup.first_name.trim().length == 0) {
+            var email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            if (this.register.first_name.trim().length == 0) {
                 this.hasError = true;
-                this.errors.push('first name field is required.');
+                this.errors.push('First name field is required.');
             }
-            if (this.signup.last_name.trim().length == 0) {
+            if (this.register.last_name.trim().length == 0) {
                 this.hasError = true;
-                this.errors.push('last name field is required.');
+                this.errors.push('Last name field is required.');
             }
-            if (this.signup.email.trim().length == 0) {
+            if (this.register.email.trim().length == 0) {
                 this.hasError = true;
-                this.errors.push('email field is required.');
+                this.errors.push('Email field is required.');
             }
-            if (this.signup.password.trim().length == 0) {
+            if (this.register.password.trim().length == 0) {
                 this.hasError = true;
-                this.errors.push('password field is required.');
+                this.errors.push('Password field is required.');
+            }
+            if (this.register.email.trim().length > 0 && !email.test(this.register.email)) {
+                this.hasError = true;
+                this.errors.push('Email format is not valid.');
+            }
+            if (this.hasError) {
+                this.register.password = '';
             }
 
         }
