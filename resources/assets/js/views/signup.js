@@ -16,7 +16,6 @@ module.exports = {
             },
             hasError: false,
             success: false,
-            response: '',
             errors: []
         }
     },
@@ -73,7 +72,6 @@ module.exports = {
                         password: '',
                         gender: 'm'
                     };
-                    self.response = 'Please check your email. We send you an activation link.';
                 }).fail(function (xhr) {
                     self.hasError = true;
                     self.signup.password = '';
