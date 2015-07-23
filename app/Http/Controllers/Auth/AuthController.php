@@ -38,7 +38,7 @@ class AuthController extends Controller
             $credentials['active'] = 1;
             // Attempt to verify the credentials and create a token for the user.
             $customClaims = ['company' => 'WITZGO.COM', 'timestamp' => time()];
-            if ( ! $response = JWTAuth::attempt($credentials, $customClaims)) {
+            if (!$response = JWTAuth::attempt($credentials, $customClaims)) {
                 return response()->json(['Invalid Credentials'], 422);
             }
         } catch (JWTException $e) {
@@ -68,7 +68,8 @@ class AuthController extends Controller
                 'first_name' => $request->get('first_name'),
                 'last_name'  => $request->get('last_name'),
                 'email'      => $email,
-                'password'   => Hash::make($request->get('password'))
+                'password'   => Hash::make($request->get('password')),
+                'gender'     => $request->get('gender')
             ];
             // Create a new user.
             $response = User::create($data);

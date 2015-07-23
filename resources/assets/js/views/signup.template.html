@@ -5,32 +5,42 @@
 
         <div class="col-md-6 login-group text-left">
 
-            <div class="login-form-main-message"></div>
+            <ul class="alert alert-success" v-if="success">
+                <li><i class="fa fa-check"></i> &nbsp; {{ response }}</li>
+            </ul>
+            <ul class="alert alert-danger" v-if="hasError">
+                <li v-repeat="row: errors"><i class="fa fa-times"></i> &nbsp; {{ row }}</li>
+            </ul>
+
             <div class="main-login-form">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="first name" required autofocus>
+                    <input type="text" class="form-control" placeholder="first name" v-model="signup.first_name"
+                           required autofocus>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="last name" required>
+                    <input type="text" class="form-control" placeholder="last name" v-model="signup.last_name" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input type="email" class="form-control" placeholder="email" required>
+                    <input type="email" class="form-control" placeholder="email" v-model="signup.email" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="password" required>
+                    <input type="password" class="form-control" placeholder="password" v-model="signup.password"
+                           required>
                 </div>
                 <div class="form-group login-group-checkbox">
-                    <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
+                    <input type="radio" name="gender" value="m" v-model="signup.gender">
                     <label for="male">male</label>
-                    <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
+                    <span>&nbsp;&nbsp;</span>
+                    <input type="radio" name="gender" value="f" v-model="signup.gender">
                     <label for="female">female</label>
                 </div>
                 <div class="margin-ten-zero">
-                    <button type="button" class="btn btn-block btn-social btn-success margin-five-zero">
+                    <button type="button" class="btn btn-block btn-social btn-success margin-five-zero"
+                            v-on="click: submit">
                         <i class="fa fa-pencil"></i> Sign Up
                     </button>
                 </div>

@@ -10,8 +10,8 @@ body {
   padding-top: 100px;
   font-family: Comfortaa, Lato, Tahoma, Verdana;
   background: none;
-  background: url(../images/poster.jpg) no-repeat;
-  background-size: cover;
+  //background: url(../images/poster.jpg) no-repeat;
+  //background-size: cover;
 }
 
 hr {
@@ -23,16 +23,26 @@ hr {
   padding: 0;
 }
 
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.search {
+  max-width: 320px;
+}
+
 .no-float {
   float: none !important;
 }
 
-.navbar-brand{
+.navbar-brand {
   padding: 0 !important;
 }
 
 .navbar-default {
-  border: none !important;
+  //border: none !important;
   background: rgba(white, 0.9);
 }
 
@@ -45,13 +55,16 @@ hr {
 }
 
 .navbar-default .navbar-nav > .active {
-  border-bottom: 2px solid saddlebrown;
+  border-bottom: 1px solid saddlebrown;
 }
 
 .navbar-default .navbar-nav > .active > a {
   color: saddlebrown;
   font-weight: bold;
   background: none !important;
+}
+.nav > li > a {
+  padding:15px 10px;
 }
 
 .nowrap {
@@ -89,6 +102,18 @@ hr {
 .margin-ten-zero {
   margin: 10px 0;
 }
+.margin-left-ten{
+  margin-left: 10px;
+}
+.margin-left-five{
+  margin-left: 5px;
+}
+.margin-left-fifteen{
+  margin-left: 15px;
+}
+.margin-right-fifteen{
+  margin-right: 15px;
+}
 
 .margin-top-five-zero {
   margin: 5px 0 0 0;
@@ -118,6 +143,10 @@ hr {
   margin: 10px 0;
 }
 
+ul.alert{
+  list-style: none;
+}
+
 /** Auth Forms **/
 .social {
   min-width: 205px;
@@ -143,11 +172,11 @@ hr {
 /*=== 4. Main Form ===*/
 .auth-form-wrapper {
   max-width: 700px;
-  border-radius: 5px;
-  background: rgba(white, 0.9);
+  //border-radius: 5px;
+  //background: rgba(white, 0.9);
 
   //border: 1px solid #e7e7e7;
-  padding: 20px;
+  //padding: 20px;
   margin: 0 auto;
 }
 
@@ -195,7 +224,7 @@ hr {
 }
 
 .login-group-checkbox {
-  margin: 5px 0 5px 8px;
+  margin: 5px 0 5px 12px;
 }
 
 /*=== 5. Login Button ===*/
@@ -230,6 +259,7 @@ hr {
     margin-left: 10px;
   }
 }
+/*
 
 //=== 8. Custom Checkbox & Radio ===
 
@@ -370,3 +400,4 @@ label:hover:before {
 
 
 
+*/

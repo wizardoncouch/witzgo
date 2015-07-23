@@ -16,9 +16,7 @@ var paths = {
     'vue': './vendor/bower_components/vue/',
     'bootstrap': './vendor/bower_components/bootstrap-sass-official/assets/',
     'fontawesome': './vendor/bower_components/fontawesome/',
-    'social': './vendor/bower_components/bootstrap-social/',
-    'cookies': './vendor/bower_components/cookies-js/'
-
+    'social': './vendor/bower_components/bootstrap-social/'
 }
 
 elixir(function (mix) {
@@ -29,7 +27,6 @@ elixir(function (mix) {
             paths.jquery + "dist/jquery.js",
             paths.bootstrap + "javascripts/bootstrap.js",
             paths.vue + "dist/vue.js",
-            paths.cookies + "dist/cookies.js",
             "resources/assets/js/ie10-viewport-bug-workaround.js"
         ], 'public/js/vendor.js', './')
         .browserify('default.js', 'public/js/default.js')
