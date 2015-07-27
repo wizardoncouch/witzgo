@@ -32,7 +32,8 @@ Route::group(['namespace' => 'UI'], function () {
 Route::group(['prefix' => 'api/1.0'], function () {
     Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
         Route::post('signin', ['middleware' => 'guest', 'uses' => 'AuthController@signin']);
+        Route::post('fbsignin', ['middleware' => 'guest', 'uses' => 'AuthController@fbSignin']);
         Route::post('signup', ['middleware' => 'guest', 'uses' => 'AuthController@signup']);
-        Route::get('signout', ['middleware' => 'auth.token', 'uses' => 'AuthController@logout']);
+        Route::get('signout', ['middleware' => 'auth.token', 'uses' => 'AuthController@signout']);
     });
 });

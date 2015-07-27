@@ -58,13 +58,13 @@
                     <li v-if="!logged"><a href="/signin" class="nowrap"><i class="fa fa-sign-in"></i> Sign In</a></li>
                     <li v-if="logged" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">User<span class="caret"></span></a>
+                           aria-expanded="false">{{ logged_name }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Edit Profile</a></li>
+                            <li><a href="#">Create Itinerary</a></li>
+                            <li><a href="#">Post Destination</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#" v-on="click: signout"><i class="fa fa-sign-out"></i> Sign Out</a></li>
                         </ul>
                     </li>
                 </ul>

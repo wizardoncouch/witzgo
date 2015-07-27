@@ -31,17 +31,25 @@ class AuthController extends APIController
     public function signin(SigninRequest $request)
     {
         try {
-            $field = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-            $request->merge([$field => $request->input('login')]);
+            $field = filter_var($request->get('user'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+            $request->merge([$field => $request->get('user')]);
 
             // Grab credentials from the request.
             $credentials = $request->only($field, 'password');
             $credentials['active'] = 1;
             // Attempt to verify the credentials and create a token for the user.
             $customClaims = ['company' => 'WITZGO.COM', 'timestamp' => time()];
-            if (!$response = JWTAuth::attempt($credentials, $customClaims)) {
+            if (!$token = JWTAuth::attempt($credentials, $customClaims)) {
                 return response()->json(['Invalid Credentials'], 422);
             }
+            if ($user = JWTAuth::toUser($token)) {
+                $user->token = $token;
+                session(['token' => $token]);
+
+                return response()->json($user);
+            }
+
+            return response()->json(['User not found'], 401);
         } catch (JWTException $e) {
             // Something went wrong whilst attempting to encode the token.
             return response()->json([$e->getMessage()], 500);
@@ -50,8 +58,6 @@ class AuthController extends APIController
             return response()->json([$e->getMessage()], 500);
         }
 
-        // all good so return the token
-        return response()->json(compact('response'));
     }
 
     /**
@@ -100,27 +106,36 @@ class AuthController extends APIController
         try {
             // Process the requests provided.
             $email = $request->get('email');
-            $data = [
-                'first_name' => $request->get('first_name'),
-                'last_name'  => $request->get('last_name'),
-                'email'      => $email,
-                'password'   => Hash::make($email),
-                'gender'     => $request->get('gender'),
-                'is_fb'      => 1
-            ];
-            // Create a new user.
-            $response = User::create($data);
+            $fb_id = $request->get('id');
+            if (User::where('fb_id', $fb_id)->count() == 0) {
+                $data = [
+                    'first_name' => $request->get('first_name'),
+                    'last_name'  => $request->get('last_name'),
+                    'email'      => $email,
+                    'password'   => Hash::make($email),
+                    'gender'     => $request->get('gender'),
+                    'fb_id'      => $fb_id
+                ];
+                // Create a new user.
+                $response = User::create($data);
 
-            // Set default values after creating an entry in the users table.
-            $response->register();
+                // Set default values after creating an entry in the users table.
+                $response->register();
+            }
 
-            $statusCode = 200;
+            $credentials = ['fb_id' => $fb_id];
+            $customClaims = ['company' => 'WITZGO.COM', 'timestamp' => time()];
+            $token = JWTAuth::attempt($credentials, $customClaims);
+            if ($response = JWTAuth::toUser($token)) {
+                $response->token = $token;
+
+                return response()->json($response);
+            }
+
+            return response()->json(['User not found.'], 401);
         } catch (\Exception $e) {
-            $response = $e->getMessage();
-            $statusCode = 500;
+            return response()->json($e->getMessage(), 500);
         }
-
-        return response()->json(compact('response'), $statusCode);
 
     }
 

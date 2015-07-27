@@ -23,7 +23,7 @@ class SigninRequest extends Request
     public function rules()
     {
         return [
-            'login'    => 'required',
+            'user'    => 'required',
             'password' => 'required|min:6'
         ];
     }

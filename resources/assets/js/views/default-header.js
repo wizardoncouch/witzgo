@@ -6,7 +6,9 @@ module.exports = {
     data: function () {
         return {
             withNav: true,
-            logo: '/images/logo-title.png'
+            logo: '/images/logo-title.png',
+            logged: false,
+            logged_name: '',
         }
     },
     template: require('./default-header.template.html'),
@@ -15,7 +17,26 @@ module.exports = {
             this.withNav = false;
         }
         if (sessionStorage.isLogged == 1) {
-            this.logo = '/images/logo.png'
+            var logged = JSON.parse(sessionStorage.logged);
+            this.logged = true;
+            this.logged_name = logged.first_name + ' ' + logged.last_name;
+            this.logo = '/images/logo.png';
+        }
+    },
+    methods: {
+        signout: function () {
+            $.ajax({
+                url: '/api/1.0/auth/signout',
+                method: 'GET',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + sessionStorage.token);
+                }
+            }).always(function () {
+                sessionStorage.removeItem('authorization');
+                sessionStorage.removeItem('logged');
+                sessionStorage.isLogged = 0;
+                //window.location.href = '/';
+            });
         }
     }
 }
