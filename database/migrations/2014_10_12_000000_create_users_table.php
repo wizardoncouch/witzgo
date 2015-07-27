@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->boolean('active')->default(0);
             $table->string('activation_code')->nullable();
             $table->timestamp('activated_at')->nullable();
+            $table->boolean('is_fb')->default(0);
             $table->timestamps();
 
         });

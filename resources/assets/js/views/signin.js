@@ -29,7 +29,9 @@ module.exports = {
                         console.log('Welcome');
                         var access_token = response.authResponse.accessToken;
                         var user_id = response.authResponse.userId;
+                        console.log(response);
                         FB.api('/me', function (response) {
+                            console.log(response);
                             var user_email = response.email;
                             var name = response.name;
                         });

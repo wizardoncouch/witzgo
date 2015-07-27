@@ -68,7 +68,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             'description' => '',
             'privacy'     => 'all'
         ]));
-        $this->activation_code = Hash::make($this->email);
         $this->save();
 
     }

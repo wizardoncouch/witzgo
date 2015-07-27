@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\APIController;
 use App\Http\Requests\ActivateAccountRequest;
+use App\Http\Requests\FBSigninRequest;
 use App\Http\Requests\SigninRequest;
 use App\Http\Requests\SignupRequest;
 use App\User;
@@ -65,11 +66,12 @@ class AuthController extends APIController
             // Process the requests provided.
             $email = $request->get('email');
             $data = [
-                'first_name' => $request->get('first_name'),
-                'last_name'  => $request->get('last_name'),
-                'email'      => $email,
-                'password'   => Hash::make($request->get('password')),
-                'gender'     => $request->get('gender')
+                'first_name'      => $request->get('first_name'),
+                'last_name'       => $request->get('last_name'),
+                'email'           => $email,
+                'password'        => Hash::make($request->get('password')),
+                'gender'          => $request->get('gender'),
+                'activation_code' => Hash::make($email . Carbon::now())
             ];
             // Create a new user.
             $response = User::create($data);
@@ -91,6 +93,35 @@ class AuthController extends APIController
         }
 
         return response()->json(compact('response'), $statusCode);
+    }
+
+    public function fbSignin(FBSigninRequest $request)
+    {
+        try {
+            // Process the requests provided.
+            $email = $request->get('email');
+            $data = [
+                'first_name' => $request->get('first_name'),
+                'last_name'  => $request->get('last_name'),
+                'email'      => $email,
+                'password'   => Hash::make($email),
+                'gender'     => $request->get('gender'),
+                'is_fb'      => 1
+            ];
+            // Create a new user.
+            $response = User::create($data);
+
+            // Set default values after creating an entry in the users table.
+            $response->register();
+
+            $statusCode = 200;
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            $statusCode = 500;
+        }
+
+        return response()->json(compact('response'), $statusCode);
+
     }
 
     /**
