@@ -18,8 +18,7 @@ module.exports = {
         }
     },
     ready: function () {
-        var token = Cookies.get('authorization');
-        if (token) {
+        if (sessionStorage.isLogged == 1) {
             window.location.href = '/';
         }
     },

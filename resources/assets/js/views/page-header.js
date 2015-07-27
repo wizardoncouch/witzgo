@@ -9,8 +9,6 @@ module.exports = {
         'default': require('./default-header'),
         'user': require('./user-header')
     },
-    template: require('./page-header.template.html'),
-    ready: function () {
-    }
+    template: require('./page-header.template.html')
 }
 

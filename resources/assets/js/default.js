@@ -14,6 +14,5 @@ var app = new Vue({
             props: ['date'],
             template: '<p class="text-center font-twelve">&copy; {{date}} All Rights Reserved. <br> by: <a href="http://wizardoncouch.com" target="_blank">wizardoncouch</a></p>'
         }
-
     }
 });
