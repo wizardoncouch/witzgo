@@ -119,6 +119,14 @@ class AuthController extends APIController
                 // Create a new user.
                 $response = User::create($data);
 
+                //get and set profile picture
+                if ($profile = @file_get_contents('http://graph.facebook.com/' . $fb_id . '/picture')) {
+                    $avatar = public_path() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'profiles' . DIRECTORY_SEPARATOR . 'avatar.jpg';
+                    if (@file_put_contents($avatar, $profile)) {
+                        $response->avatar = $avatar;
+                    }
+                }
+
                 // Set default values after creating an entry in the users table.
                 $response->register();
             }
