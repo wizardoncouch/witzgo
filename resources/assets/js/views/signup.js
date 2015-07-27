@@ -27,7 +27,7 @@ module.exports = {
     template: require('./signup.template.html'),
     methods: {
         fbsignin: function () {
-            FB.signin(function (response) {
+            FB.login(function (response) {
                 if (response.authResponse) {
                     FB.api('/me?fields=first_name,last_name,gender,email', function (response) {
                         var fb_data = {
