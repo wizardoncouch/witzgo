@@ -9,12 +9,20 @@ use Illuminate\Support\Facades\View;
 
 class DefaultController extends Controller
 {
+
+    private $view;
+
+    public function __construct()
+    {
+        $this->view = 'en';
+    }
+
     /**
      * @return mixed
      */
     public function wall()
     {
-        return View::make('default', ['view' => 'wall']);
+        return View::make($this->view, ['view' => 'wall']);
     }
 
     /**
@@ -22,7 +30,7 @@ class DefaultController extends Controller
      */
     public function signup()
     {
-        return View::make('default', ['view' => 'signup']);
+        return View::make($this->view, ['view' => 'signup']);
     }
 
     /**
@@ -30,7 +38,7 @@ class DefaultController extends Controller
      */
     public function signin()
     {
-        return View::make('default', ['view' => 'signin']);
+        return View::make($this->view, ['view' => 'signin']);
     }
 
     /**
@@ -59,7 +67,8 @@ class DefaultController extends Controller
         if ($view == null) {
             return response()->view('errors.404', [], 404);
         }
-        return View::make('default', ['view' => 'browse', 'sub' => $view]);
+
+        return View::make($this->view, ['view' => 'browse', 'sub' => $view]);
     }
 
 }

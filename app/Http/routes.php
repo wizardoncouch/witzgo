@@ -22,9 +22,10 @@ Route::group(['namespace' => 'UI'], function () {
     Route::get('activate', 'DefaultController@activate');
 
     Route::group(['prefix' => '{username}'], function () {
-        Route::get('/', 'UserController@wall');
+        Route::get('/', 'UserController@dashboard');
         Route::get('dashboard', 'UserController@dashboard');
     });
+
 });
 
 

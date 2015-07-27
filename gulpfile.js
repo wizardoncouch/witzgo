@@ -27,7 +27,8 @@ elixir(function (mix) {
             paths.jquery + "dist/jquery.js",
             paths.bootstrap + "javascripts/bootstrap.js",
             paths.vue + "dist/vue.js",
-            "resources/assets/js/ie10-viewport-bug-workaround.js"
+            "resources/assets/js/ie10-viewport-bug-workaround.js",
+            "resources/assets/js/witzgo-global.js"
         ], 'public/js/vendor.js', './')
         .browserify('default.js', 'public/js/default.js')
         .browserify('user.js', 'public/js/user.js')

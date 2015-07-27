@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\APIController;
 use App\Http\Requests\ActivateAccountRequest;
 use App\Http\Requests\SigninRequest;
 use App\Http\Requests\SignupRequest;
@@ -10,10 +11,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use JWTAuth;
-use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class AuthController extends Controller
+class AuthController extends APIController
 {
 
     /*
