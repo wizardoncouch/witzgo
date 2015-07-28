@@ -30,7 +30,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'first_name',
         'last_name',
         'email',
-        'password'
+        'password',
+        'gender',
+        'activation_code',
+        'fb_id',
+        'active'
     ];
 
     /**

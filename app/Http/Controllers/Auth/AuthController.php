@@ -106,19 +106,24 @@ class AuthController extends APIController
         try {
             // Process the requests provided.
             $email = $request->get('email');
-            $fb_id = $request->get('id');
-            if (User::where('fb_id', $fb_id)->count() == 0) {
+            $fb_id = (int)$request->get('id');
+            if (User::whereFbId($fb_id)->count() == 0) {
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $password = '';
+                for ($i = 0; $i < strlen($characters); $i++) {
+                    $password .= $characters[rand(0, strlen($characters) - 1)];
+                }
                 $data = [
                     'first_name' => $request->get('first_name'),
                     'last_name'  => $request->get('last_name'),
                     'email'      => $email,
-                    'password'   => Hash::make($email),
+                    'password'   => Hash::make($password),
                     'gender'     => $request->get('gender'),
-                    'fb_id'      => $fb_id
+                    'fb_id'      => $fb_id,
+                    'active'     => 1
                 ];
                 // Create a new user.
                 $response = User::create($data);
-
                 //get and set profile picture
                 if ($profile = @file_get_contents($request->get('url'))) {
                     $dir = public_path() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'profiles';
@@ -130,13 +135,18 @@ class AuthController extends APIController
                         $response->avatar = $avatar;
                     }
                 }
-
+                $response->activated_at = Carbon::now();
                 // Set default values after creating an entry in the users table.
                 $response->register();
             }
-
-            $credentials = ['fb_id' => $fb_id];
-            $customClaims = ['company' => 'WITZGO.COM', 'timestamp' => time()];
+            $credentials = [
+                'fb_id'    => $fb_id,
+                'password' => $password
+            ];
+            $customClaims = [
+                'company'   => 'WITZGO.COM',
+                'timestamp' => time()
+            ];
             $token = JWTAuth::attempt($credentials, $customClaims);
             if ($response = JWTAuth::toUser($token)) {
                 $response->token = $token;
