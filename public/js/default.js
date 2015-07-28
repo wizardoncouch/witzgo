@@ -249,8 +249,10 @@ module.exports = {
     methods: {
         fbsignin: function fbsignin() {
             FB.login(function (response) {
+                console.log(response);
                 if (response.authResponse) {
                     FB.api('/me?fields=first_name,last_name,gender,email', function (response) {
+                        console.log(response);
                         var fb_data = {
                             'first_name': response.first_name,
                             'last_name': response.last_name,
