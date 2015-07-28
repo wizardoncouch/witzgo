@@ -147,11 +147,12 @@ class AuthController extends APIController
                 'company'   => 'WITZGO.COM',
                 'timestamp' => time()
             ];
-            $token = JWTAuth::attempt($credentials, $customClaims);
-            if ($response = JWTAuth::toUser($token)) {
-                $response->token = $token;
+            if($token = JWTAuth::attempt($credentials, $customClaims)){
+                if ($response = JWTAuth::toUser($token)) {
+                    $response->token = $token;
 
-                return response()->json($response);
+                    return response()->json($response);
+                }
             }
 
             return response()->json(['User not found.'], 401);
