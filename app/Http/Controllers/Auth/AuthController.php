@@ -108,16 +108,11 @@ class AuthController extends APIController
             $email = $request->get('email');
             $fb_id = (int)$request->get('id');
             if (User::whereFbId($fb_id)->count() == 0) {
-                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                $password = '';
-                for ($i = 0; $i < strlen($characters); $i++) {
-                    $password .= $characters[rand(0, strlen($characters) - 1)];
-                }
                 $data = [
                     'first_name' => $request->get('first_name'),
                     'last_name'  => $request->get('last_name'),
                     'email'      => $email,
-                    'password'   => Hash::make($password),
+                    'password'   => Hash::make($fb_id),
                     'gender'     => $request->get('gender'),
                     'fb_id'      => $fb_id,
                     'active'     => 1
@@ -130,7 +125,12 @@ class AuthController extends APIController
                     if (!is_dir($dir)) {
                         @mkdir($dir, 0777, true);
                     }
-                    $avatar = $dir . DIRECTORY_SEPARATOR . 'avatar.jpg';
+                    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $crypt = '';
+                    for ($i = 0; $i < 10; $i++) {
+                        $crypt .= $characters[rand(0, strlen($characters) - 1)];
+                    }
+                    $avatar = $dir . DIRECTORY_SEPARATOR . md5($crypt) . '-avatar.jpg';
                     if (@file_put_contents($avatar, $profile)) {
                         $response->avatar = $avatar;
                     }
@@ -141,7 +141,7 @@ class AuthController extends APIController
             }
             $credentials = [
                 'fb_id'    => $fb_id,
-                'password' => $password
+                'password' => $fb_id
             ];
             $customClaims = [
                 'company'   => 'WITZGO.COM',
