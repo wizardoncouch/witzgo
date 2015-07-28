@@ -26,7 +26,7 @@ class FBSigninRequest extends Request
             'last_name'  => 'required',
             'email'      => 'required|email',
             'id'         => 'required|integer',
-            'gender'     => 'required|string|in:m,f,o',
+            'gender'     => 'required|in:m,f,o',
             'url'        => 'required|string|url',
         ];
     }

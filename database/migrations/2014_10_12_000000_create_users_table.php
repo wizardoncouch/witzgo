@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->string('first_name');
             $table->string('last_name');
-            $table->enum('gender', ['m', 'f']);
+            $table->enum('gender', ['m', 'f', 'o']);
             $table->string('avatar')->default('/images/avatar.jpg');
             $table->string('permissions')->default(json_encode(['personal']));
             $table->boolean('active')->default(0);

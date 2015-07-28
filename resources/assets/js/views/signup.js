@@ -28,26 +28,37 @@ module.exports = {
     methods: {
         fbsignin: function () {
             FB.login(function (response) {
-                console.log(response);
                 if (response.authResponse) {
-                    FB.api('/me?fields=first_name,last_name,gender,email', function (response) {
-                        console.log(response);
-                        var fb_data = {
-                            'first_name': response.first_name,
-                            'last_name': response.last_name,
-                            'email': response.email,
-                            'gender': response.gender,
-                            'id': response.id
-                        }
-                        $.ajax({
-                            url: '/api/1.0/auth/fbsignin',
-                            method: 'POST',
-                            data: fb_data
-                        }).done(function (response) {
-                            sessionStorage.token = response.token;
-                            sessionStorage.isLogged = 1;
-                            sessionStorage.logged = JSON.stringify(response);
-                            window.location.href = '/' + response.username;
+                    FB.api('/me?fields=first_name,last_name,gender,email', function (me) {
+                        FB.api('/me/picture?type=large', function (me_picture) {
+                            switch (me.gender) {
+                                case 'male':
+                                    var gender = 'm';
+                                    break;
+                                case 'female':
+                                    var gender = 'f';
+                                    break;
+                                default:
+                                    var gender = 'o';
+                            }
+                            var fb_data = {
+                                'first_name': me.first_name,
+                                'last_name': me.last_name,
+                                'email': me.email,
+                                'gender': gender,
+                                'id': me.id,
+                                'url': me_picture.data.url
+                            }
+                            $.ajax({
+                                url: '/api/1.0/auth/fbsignin',
+                                method: 'POST',
+                                data: fb_data
+                            }).done(function (response) {
+                                sessionStorage.token = response.token;
+                                sessionStorage.isLogged = 1;
+                                sessionStorage.logged = JSON.stringify(response);
+                                window.location.href = '/' + response.username;
+                            });
                         });
                     });
                 }

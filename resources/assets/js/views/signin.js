@@ -28,14 +28,15 @@ module.exports = {
                 if (response.authResponse) {
                     FB.api('/me?fields=first_name,last_name,gender,email', function (me) {
                         FB.api('/me/picture?type=large', function (me_picture) {
-                            var gender = 'o';
                             switch (me.gender) {
                                 case 'male':
-                                    gender = 'm';
+                                    var gender = 'm';
                                     break;
                                 case 'female':
-                                    gender = 'f';
+                                    var gender = 'f';
                                     break;
+                                default:
+                                    var gender = 'o';
                             }
                             var fb_data = {
                                 'first_name': me.first_name,
