@@ -3,9 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTablePlans extends Migration
+class CreateItinerariesTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,7 +12,7 @@ class CreateTablePlans extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('itineraries', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id');
@@ -34,6 +33,6 @@ class CreateTablePlans extends Migration
      */
     public function down()
     {
-        Schema::drop('plans');
+        Schema::drop('itineraries');
     }
 }

@@ -12,7 +12,7 @@ class Plan extends Model
      *
      * @var string
      */
-    protected $table = 'plans';
+    protected $table = 'itineraries';
 
     /**
      * The attributes that are mass assignable.
@@ -38,7 +38,7 @@ class Plan extends Model
      */
     public function members()
     {
-        return $this->belongsToMany('App\User', 'users_plans');
+        return $this->belongsToMany('App\User', 'itineraries_users');
     }
 
 }

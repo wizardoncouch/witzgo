@@ -3,9 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersPlansTable extends Migration
+class CreateItinerariesusersTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,15 +12,15 @@ class CreateUsersPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_plans', function (Blueprint $table) {
+        Schema::create('itineraries_users', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('plan_id')->unsigned()->index();
+            $table->integer('itinerary_id')->unsigned()->index();
             $table->enum('role', ['admin', 'member'])->default('member');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
+            $table->foreign('itinerary_id')->references('id')->on('itineraries')->onDelete('cascade');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateUsersPlansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users_plans');
+        Schema::drop('itineraries_users');
     }
 }

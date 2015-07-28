@@ -48,7 +48,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function myplan()
+    public function myItineraries()
     {
         return $this->hasMany('App\Plan');
     }
@@ -56,9 +56,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function plans()
+    public function itineraries()
     {
-        return $this->belongsToMany('App\Plan', 'users_plans');
+        return $this->belongsToMany('App\Plan', 'itineraries_users');
     }
 
     /**
