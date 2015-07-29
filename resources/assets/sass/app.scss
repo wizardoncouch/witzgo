@@ -114,7 +114,7 @@ hr {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: $white;
+  color: $inverse_link_color;
   transition: all ease-in-out 500ms;
 }
 
@@ -124,7 +124,6 @@ hr {
 
 .navbar-inverse .navbar-nav > .active > a {
   color: $white;
-  text-shadow: $inverse_text_shadow 0 0 10px, $inverse_text_shadow 5px 5px 5px;
   background: none;
 }
 
@@ -174,7 +173,7 @@ hr {
 }
 
 .dropdown-menu > li > a {
-  color: $white;
+  color: $inverse_link_color;
 }
 
 .dropdown-menu > li > a:hover {
@@ -200,7 +199,7 @@ hr {
     background: $selected;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a{
-    color: $white;
+    color: $inverse_link_color;
   }
 }
 
