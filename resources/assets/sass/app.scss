@@ -7,7 +7,7 @@ $fa-font-path: "/fonts/fontawesome";
 @import "variables";
 
 body {
-  background: #ffffff;
+  background: $white;
   padding-top: 100px;
   font-family: Comfortaa, Lato, Tahoma, Verdana;
   background: none;
@@ -26,25 +26,25 @@ hr {
 
 @media screen and (min-width: 1400px) {
   .search {
-    min-width: 550px;
+    min-width: 520px;
   }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1399px) {
   .search {
-    min-width: 520px;
+    min-width: 500px;
   }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .search {
-    min-width: 420px;
+    min-width: 380px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .search {
-    min-width: 240px;
+    width: 190px;
   }
 }
 
@@ -59,7 +59,7 @@ hr {
   border: 0;
   background-color: #B6F2B6;
   padding-left: 30px;
-  color: #228b22;
+  color: $background;
 
   //@include placeholder {
   //  color: rgba($white, 0.6);
@@ -88,7 +88,7 @@ hr {
   position: absolute;
   left: 10px;
   top: 10px;
-  color: #228b22;
+  color: $background;
 }
 
 .no-float {
@@ -101,39 +101,36 @@ hr {
 
 .navbar-inverse {
   border: none;
-  background: #0ECC6D; //rgba(white, 0.9);
+  background: $background; //rgba(white, 0.9);
 }
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form{
-  border-color:saddlebrown;
+  border-color:$selected;
 }
 
 .navbar-inverse .navbar-nav > li {
-  min-width: 80px !important;
+  margin: 0 5px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #ffffff;
+  color: $white;
   transition: all ease-in-out 500ms;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {
-  color: #D5E8D5;
-}
-
-.navbar-inverse .navbar-nav > .active {
-  border-bottom: 1px solid saddlebrown;
+  color: $inverse_link_color_hover;
 }
 
 .navbar-inverse .navbar-nav > .active > a {
-  color: saddlebrown;
-  font-weight: bold;
+  color: $white;
+  text-shadow: $inverse_text_shadow 0 0 10px, $inverse_text_shadow 5px 5px 5px;
   background: none;
 }
 
+.navbar-inverse .navbar-nav > .active > a:focus,
 .navbar-inverse .navbar-nav > .active > a:hover {
-  color: #BA7543;
+  color: $inverse_link_color_hover;
   background: none;
 }
 
@@ -141,7 +138,7 @@ hr {
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   background: none !important;
-  color: #D5E8D5;
+  color: $inverse_link_color_hover;
 }
 
 .nav > li > a {
@@ -150,59 +147,60 @@ hr {
 
 .navbar-inverse .navbar-toggle {
   border: none;
-  color: #ffffff;
+  color: $white;
 }
 
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus{
   background: none;
-  color: #D5E8D5;
+  color: $inverse_link_color_hover;
 }
 
 .btn-success {
-  background: #0ECC75;
+  background: $success;
   border: 1px solid #0DB568;
-}
-
-.btn:hover,
-.btn:focus {
 }
 
 .btn-success:focus,
 .btn-success:hover {
-  background: #0DB568;
+  background: $success-hover;
+  border: 1px solid #0DB568;
 }
 
 .dropdown-menu {
-  background: #0ECC75;
+  background: $background;
   border: none;
   border-radius: 0;
 }
 
 .dropdown-menu > li > a {
-  color: #ffffff;
+  color: $white;
 }
 
 .dropdown-menu > li > a:hover {
   background: none;
-  color: #D5E8D5;
+  font-weight: bold;
+  color: $inverse_link_color_hover;
 }
 
 .dropdown-menu > .active > a {
-  background: saddlebrown;
+  background: $selected;
 }
 
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  background: saddlebrown;
-  color: #BA7543;
+  background: $selected;
+  color: $selected_hover;
 }
 
 @media screen and (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
-    background: saddlebrown;
+    background: $selected;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a{
+    color: $white;
   }
 }
 
@@ -384,7 +382,7 @@ ul.alert {
 
 /*=== 5. Login Button ===*/
 .auth-form-wrapper button {
-  color: #ffffff;
+  color: $white;
   transition: all ease-in-out 500ms;
 }
 

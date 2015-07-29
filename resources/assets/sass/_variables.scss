@@ -1,6 +1,13 @@
 /**
  * Swatches
  */
+$background: #5fcf80;
+$selected: #d87575;
+$selected_hover: #D98B8B;
+
+$inverse_link_color:#D5E8D5;
+$inverse_link_color_hover:#C5DEC5;
+$inverse_text_shadow:#9DE3B1;
 
 $primary: #90caf9;
 $primary-hover: rgba($primary, 0.90);
@@ -10,7 +17,7 @@ $complete: #48b0f7;
 $complete-hover: rgba($complete, 0.90);
 $complete-active: #3a8fc8;
 
-$success: #10cfbd;
+$success: $background;
 $success-hover: rgba($success, 0.90);
 $success-active: #0da899;
 
@@ -39,13 +46,6 @@ $grey: #ebecec;
 $darken: #000;
 $border: rgba($dark, 0.09);
 
-/** 
- * Fonts
- */
-
-$base-font-size		: 15px;
-$font-montserrat	: 'Montserrat', sans-serif;
-$font-roboto		: 'Roboto', sans-serif;
 
 
 /**
