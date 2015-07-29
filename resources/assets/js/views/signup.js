@@ -57,7 +57,7 @@ module.exports = {
                                 sessionStorage.token = response.token;
                                 sessionStorage.isLogged = 1;
                                 sessionStorage.logged = JSON.stringify(response);
-                                window.location.href = '/' + response.username;
+                                window.location.href = '/user/' + response.username;
                             });
                         });
                     });

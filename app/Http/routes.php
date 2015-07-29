@@ -12,6 +12,7 @@
 */
 
 
+/***** backend frontend *****/
 Route::group(['namespace' => 'UI'], function () {
     Route::get('/', 'DefaultController@wall');
     Route::get('wall', 'DefaultController@wall');
@@ -21,7 +22,7 @@ Route::group(['namespace' => 'UI'], function () {
     Route::get('signup', 'DefaultController@signup');
     Route::get('activate', 'DefaultController@activate');
 
-    Route::group(['prefix' => '{username}'], function () {
+    Route::group(['prefix' => '/user/{username}'], function () {
         Route::get('/', 'UserController@dashboard');
         Route::get('dashboard', 'UserController@dashboard');
     });
@@ -29,6 +30,7 @@ Route::group(['namespace' => 'UI'], function () {
 });
 
 
+/***** backend routes *****/
 Route::group(['prefix' => 'api/1.0'], function () {
     Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
         Route::post('signin', 'AuthController@signin');

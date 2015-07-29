@@ -121,7 +121,7 @@ class AuthController extends APIController
                 $response = User::create($data);
                 //get and set profile picture
                 if ($profile = @file_get_contents($request->get('url'))) {
-                    $dir = public_path() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'profiles';
+                    $dir = public_path() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'profile';
                     if (!is_dir($dir)) {
                         @mkdir($dir, 0777, true);
                     }
@@ -130,7 +130,7 @@ class AuthController extends APIController
                     for ($i = 0; $i < 10; $i++) {
                         $crypt .= $characters[rand(0, strlen($characters) - 1)];
                     }
-                    $avatar = $dir . DIRECTORY_SEPARATOR . md5($crypt) . '-avatar.jpg';
+                    $avatar = $dir . DIRECTORY_SEPARATOR . md5($fb_id.$crypt) . '-avatar.jpg';
                     if (@file_put_contents($avatar, $profile)) {
                         $response->avatar = $avatar;
                     }
