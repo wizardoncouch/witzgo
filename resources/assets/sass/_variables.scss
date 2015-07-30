@@ -1,59 +1,68 @@
 /**
  * Swatches
  */
-$background: #5fcf80;
-$selected: #d87575;
-$selected_hover: #D98B8B;
+$light_green:#D9FAD9;
+$emerald: #2ecc71;
+$nephritis: #27ae60;
+$pumpkin: #d35400;
+$river: #3498db;
+$belize: #2980b9;
+$asphalt: #34495e;
+$silver: #bdc3c7;
+$clouds: #ecf0f1;
+$white: #ffffff;
+$midnight: #2c3e50;
+$asbestos: #7f8c8d;
+$alizarin: #e74c3c;
+$pomegranate: #c0392b;
+$sun: #f1c40f;
+$orange: #f39c12;
+$dark_emerald: #2CBF6A;
 
-$inverse_link_color:#efefef;
-$inverse_link_color_hover:#C5DEC5;
-$inverse_text_shadow:#9DE3B1;
-
-$primary: #90caf9;
+$inverse_background: $emerald;
+$primary: $river;
 $primary-hover: rgba($primary, 0.90);
-$primary-active: #03a9f4;
+$primary-active: $belize;
 
-$complete: #48b0f7;
+$complete: $asphalt;
 $complete-hover: rgba($complete, 0.90);
-$complete-active: #3a8fc8;
+$complete-active: $midnight;
 
-$success: $background;
-$success-hover: rgba($success, 0.90);
-$success-active: #0da899;
+$success: $emerald;
+$success-hover: rgba($nephritis, 0.90);
+$success-active: $nephritis;
 
-$danger: #f55753;
-$danger-hover: rgba($danger, 0.90);
-$danger-active: #c64643;
+$danger: $alizarin;
+$danger-hover: rgba($pomegranate, 0.90);
+$danger-active: $pomegranate;
 
-$warning: #f8d053;
-$warning-hover: rgba($warning, 0.90);
-$warning-active: #c9a843;
+$warning: $sun;
+$warning-hover: rgba($orange, 0.90);
+$warning-active: $orange;
 
-$white: #fff;
-$white-hover: #e6e6e6;
-$white-active: #2c2c2c;
-
-$dark: #282E31;
-$dark-hover: #2b303b;
-$dark-active: #232730;
-
-$link: #337ab7;
-$link-hover: rgba( $link, 0.90 );
-$link-active: #316C9E;
-
-$text: #626262;
-$grey: #ebecec;
-$darken: #000;
-$border: rgba($dark, 0.09);
-
-
+$text: $asbestos;
+$placeholder: $asbestos;
+$border: rgba($nephritis, 0.09);
+$border-dark: $asphalt;
+$border-light: $silver;
+$dark: $asphalt;
 
 /**
  * Media Query Break Points
  */
 
-$screen-xs		: 270px;
-$screen-sm		: 768px;
-$screen-md 		: 992px;
-$screen-lg 		: 1200px;
-$screen-xlg 	: 1400px;
+$screen-xs: 270px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+$screen-xlg: 1400px;
+
+/**
+ * Fonts
+ */
+$text-twenty: 20px;
+$text-eighten: 18px;
+$text-sixteen: 16px;
+$text-fourteen: 14px;
+$text-twelve: 12px;
+$font-comforta: Comfortaa, sans-serif;

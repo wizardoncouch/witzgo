@@ -9,6 +9,7 @@ module.exports = {
             logo: '/images/logo-title.png',
             logged: false,
             logged_name: '',
+            search_trigger: false
         }
     },
     template: require('./default-header.template.html'),
@@ -24,6 +25,16 @@ module.exports = {
         }
     },
     methods: {
+        searchTrigger: function () {
+            this.search_trigger = true;
+            var self = this;
+            Vue.nextTick(function () {
+                self.$$.searchInput.focus();
+            });
+        },
+        searchUnTrigger: function () {
+            this.search_trigger = false;
+        },
         signout: function () {
             $.ajax({
                 url: '/api/1.0/auth/signout',
@@ -35,7 +46,7 @@ module.exports = {
                 sessionStorage.removeItem('authorization');
                 sessionStorage.removeItem('logged');
                 sessionStorage.isLogged = 0;
-                //window.location.href = '/';
+                window.location.href = '/';
             });
         }
     }

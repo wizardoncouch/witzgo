@@ -5,409 +5,450 @@ $fa-font-path: "/fonts/fontawesome";
 @import "font-awesome";
 @import "bootstrap-social";
 @import "variables";
+@import "margins";
+@import "paddings";
+@import "mixins";
 
 body {
-  background: $white;
-  padding-top: 100px;
-  font-family: Comfortaa, Lato, Tahoma, Verdana;
-  background: none;
-  //background: url(../images/poster.jpg) no-repeat;
-  //background-size: cover;
+    background: $white;
+    padding-top: 100px;
+    font-family: $font-comforta;
+    background: none;
+    color: $text;
 }
 
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #cccccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-@media screen and (min-width: 1400px) {
-  .search {
-    min-width: 520px;
-  }
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1399px) {
-  .search {
-    min-width: 500px;
-  }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-  .search {
-    min-width: 380px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .search {
-    width: 190px;
-  }
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $border-light;
+    margin: 1em 0;
+    padding: 0;
 }
 
 .search-box {
-  width: 100%;
-  position: relative;
+    width: 100%;
+    position: relative;
 }
 
 .search-control {
-  transition: all ease-in-out 500ms;
-  outline: 0;
-  border: 0;
-  background-color: #B6F2B6;
-  padding-left: 30px;
-  color: $background;
+    transition: all ease-in-out 500ms;
+    outline: 0;
+    border: 0;
+    background-color: $nephritis;
+    padding-left: 30px;
+    color: $clouds;
 
-  //@include placeholder {
-  //  color: rgba($white, 0.6);
-  //}
-
-  &:hover {
-    background-color: #D9FAD9;
-  }
-
-  &:focus {
-    border: none;
-    background-color: $white;
-    color: #333C40;
+    &:hover {
+        background-color: $dark_emerald;
+        color: $clouds;
+    }
 
     @include placeholder {
-      color: $text;
+        color: $emerald;
     }
 
-    & + .search-icon {
-      color: $text;
+    &:focus {
+        border: none;
+        background-color: $white;
+        color: $text;
+
+        @include placeholder {
+            color: $silver;
+        }
+
+        & + .search-icon {
+            color: $text;
+        }
     }
-  }
 }
 
 .search-icon {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  color: $background;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: $emerald;
 }
 
 .no-float {
-  float: none !important;
-}
-
-.navbar-brand {
-  padding: 0 !important;
+    float: none !important;
 }
 
 .navbar-inverse {
-  border: none;
-  background: $background; //rgba(white, 0.9);
-}
+    border: none;
+    background: $inverse_background;
 
-.navbar-inverse .navbar-collapse,
-.navbar-inverse .navbar-form{
-  border-color:$selected;
-}
+    .navbar-offset {
+        .navbar-nav {
+            margin: 0;
 
-.navbar-inverse .navbar-nav > li {
-  margin: 0 5px;
-}
+            & > li {
+                float: left;
+            }
+        }
+    }
 
-.navbar-inverse .navbar-nav > li > a {
-  color: $inverse_link_color;
-  transition: all ease-in-out 500ms;
-}
+    .navbar-collapse,
+    .navbar-form {
+        @media screen and (max-width: $screen-sm - 1) {
+            clear: both;
+            overflow: hidden;
+        }
+        border-color: $border;
+    }
+    .navbar-nav {
 
-.navbar-inverse .navbar-nav > li > a:hover {
-  color: $inverse_link_color_hover;
-}
+        & > li {
+            margin: 0 5px;
 
-.navbar-inverse .navbar-nav > .active > a {
-  color: $white;
-  background: none;
-}
+            a {
+                font: $font-comforta;
+                color: $clouds;
+                transition: all ease-in-out 500ms;
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
 
-.navbar-inverse .navbar-nav > .active > a:focus,
-.navbar-inverse .navbar-nav > .active > a:hover {
-  color: $inverse_link_color_hover;
-  background: none;
-}
+        .active {
+            & > a {
+                color: $white;
+                background: none;
+                font-weight: bolder;
 
-.navbar-inverse .navbar-nav > .open > a,
-.navbar-inverse .navbar-nav > .open > a:hover,
-.navbar-inverse .navbar-nav > .open > a:focus {
-  background: none !important;
-  color: $inverse_link_color_hover;
+                &:focus,
+                &:hover {
+                    color: $light_green;
+                    background: none;
+                }
+            }
+        }
+
+        .open {
+            & > a,
+            & > a:hover,
+            & > a:focus {
+                background: none;
+                color: $light_green;
+            }
+        }
+    }
+
+    .navbar-toggle {
+        border: 0 !important;
+        float: left;
+        margin-right: 0;
+        margin-left: 15px;
+        border-radius: 0;
+
+        &:hover,
+        &:focus {
+            background: transparent !important;
+        }
+
+        .icon-bar {
+            background-color: $white;
+
+            &:first-of-type {
+                width: 18px;
+            }
+
+            &:nth-of-type(2) {
+                width: 12px;
+            }
+
+            &:last-of-type {
+                width: 20px;
+            }
+        }
+
+    }
 }
 
 .nav > li > a {
-  padding: 15px 10px;
+    padding: 15px 10px;
 }
 
-.navbar-inverse .navbar-toggle {
-  border: none;
-  color: $white;
-}
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    // Primary Button
+    transition: all ease-in-out 500ms;
+    border-radius: 3px;
+    &.btn-default {
 
-.navbar-inverse .navbar-toggle:hover,
-.navbar-inverse .navbar-toggle:focus{
-  background: none;
-  color: $inverse_link_color_hover;
-}
+        &:hover,
+        &:focus {
+            background-color: #fefefe;
+            border: 1px solid rgba($dark, 0.2);
+        }
 
-.btn-success {
-  background: $success;
-  border: 1px solid #0DB568;
-}
+        &:active {
+            @include box-shadow(0, 0, 0);
+        }
+    }
 
-.btn-success:focus,
-.btn-success:hover {
-  background: $success-hover;
-  border: 1px solid #0DB568;
+    // Primary Button
+    &.btn-primary {
+        background-color: $primary;
+        color: $white;
+
+        &:hover {
+            background-color: $primary-hover;
+        }
+
+        &:active {
+            background-color: $primary-active;
+        }
+    }
+
+    // Success Button
+    &.btn-success {
+        background-color: $success;
+        color: $white;
+
+        &:hover {
+            background-color: $success-hover;
+        }
+
+        &:active {
+            background-color: $success-active;
+        }
+    }
+
+    // Complete Button
+    &.btn-complete {
+        background-color: $complete;
+        color: $white;
+
+        &:hover {
+            background-color: $complete-hover;
+        }
+
+        &:active {
+            background-color: $complete-active;
+        }
+    }
+
+    // Warning Button
+    &.btn-warning {
+        background-color: $warning;
+        color: $white;
+
+        &:hover {
+            background-color: $warning-hover;
+        }
+
+        &:active {
+            background-color: $warning-active;
+        }
+    }
+
+    // Danger Button
+    &.btn-danger {
+        background-color: $danger;
+        color: $white;
+
+        &:hover {
+            background-color: $danger-hover;
+        }
+
+        &:active {
+            background-color: $danger-active;
+        }
+    }
+
+    &.btn-dark {
+        background-color: $danger;
+        color: $white;
+
+        &:hover {
+            background-color: $danger-hover;
+        }
+
+        &:active {
+            background-color: $danger-active;
+        }
+    }
 }
 
 .dropdown-menu {
-  background: $background;
-  border: none;
-  border-radius: 0;
-}
+    background: $emerald;
+    border: none;
+    border-radius: 0;
+    & > li {
+        & > a {
+            color: $white;
+            &:hover {
+                background: none;
+                font-weight: bolder;
+                color: $clouds;
+            }
+        }
+        &.active > a {
+            background: $dark_emerald !important;
+            color: $clouds;
 
-.dropdown-menu > li > a {
-  color: $inverse_link_color;
-}
-
-.dropdown-menu > li > a:hover {
-  background: none;
-  font-weight: bold;
-  color: $inverse_link_color_hover;
-}
-
-.dropdown-menu > .active > a {
-  background: $selected;
-}
-
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
-  background: $selected;
-  color: $selected_hover;
+            &:hover,
+            &:focus {
+                color: $light_green;
+                font-weight: bolder;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 767px) {
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
-    background: $selected;
-  }
-  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a{
-    color: $inverse_link_color;
-  }
+    .navbar-inverse {
+        .navbar-nav {
+            .open {
+                .dropdown-menu {
+                    & > li {
+                        & > a {
+                            color: $clouds;
+                        }
+
+                        &.active {
+                            & > a {
+                                &:hover,
+                                &:focus {
+                                    background: $white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .nowrap {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .font-twelve {
-  font-size: 12px;
+    font-size: $text-twelve;
+}
+
+.font-fourteen {
+    font-size: $text-fourteen;
 }
 
 .font-sixteen {
-  font-size: 16px;
+    font-size: $text-sixteen;
 }
 
 .font-eighteen {
-  font-size: 18px;
+    font-size: $text-eighten;
 }
 
 .font-twenty {
-  font-size: 20px;
+    font-size: $text-twenty;
 }
 
 .bold {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .border {
-  border: 1px solid red;
-}
-
-.margin-fifty-zero {
-  margin: 50px 0;
-}
-
-.margin-ten-zero {
-  margin: 10px 0;
-}
-
-.margin-left-ten {
-  margin-left: 10px;
-}
-
-.margin-left-five {
-  margin-left: 5px;
-}
-
-.margin-right-five {
-  margin-right: 5px;
-}
-
-.margin-left-ten {
-  margin-left: 10px;
-}
-
-.margin-right-ten {
-  margin-right: 10px;
-}
-
-.margin-left-fifteen {
-  margin-left: 15px;
-}
-
-.margin-right-fifteen {
-  margin-right: 15px;
-}
-
-.margin-top-five-zero {
-  margin: 5px 0 0 0;
-}
-
-.margin-top-eight-zero {
-  margin: 8px 0 0 0;
-}
-
-.margin-five-zero {
-  margin: 5px 0;
-}
-
-.padding-ten {
-  padding: 10px;
-}
-
-.padding-ten-thirty {
-  padding: 10px 30px;
-}
-
-.margin-eight-zero {
-  margin: 8px 0;
-}
-
-.margin-ten-zero {
-  margin: 10px 0;
+    border: 1px solid red;
 }
 
 ul.alert {
-  list-style: none;
+    list-style: none;
 }
 
 /** Auth Forms **/
 .social {
-  min-width: 205px;
+    min-width: 205px;
 }
 
-.auth-title {
-  padding: 15px 0;
-  font-size: 30px;
-  color: #999999;
-  font-family: Comfortaa, Lato, Tahoma, Verdana;
-}
+.form-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
 
-/*=== 3. Text Outside the Box ===*/
-.auth-form-wrapper .etc-login-form {
-  color: #919191;
-  padding: 10px 0;
-}
+    .auth-title {
+        padding: 15px 0;
+        font-size: 30px;
+        color: $text;
+    }
+    .etc-login-form {
+        color: $text;
+        padding: 10px 0;
 
-.auth-form-wrapper .etc-login-form p {
-  margin-bottom: 5px;
-}
+        & > p {
+            margin-bottom: 5px;
+        }
 
-/*=== 4. Main Form ===*/
-.auth-form-wrapper {
-  max-width: 700px;
-  //border-radius: 5px;
-  //background: rgba(white, 0.9);
+    }
+    .form-control {
+        border: 0;
+        box-shadow: 0 0 0;
+        border-radius: 0;
+        background: transparent;
+        color: $text;
+        padding: 7px 0;
+        font-weight: bold;
+        height: auto;
+        &::-webkit-input-placeholder,
+        &:-moz-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder {
+            color: $placeholder;
+        }
+    }
 
-  //border: 1px solid #e7e7e7;
-  //padding: 20px;
-  margin: 0 auto;
-}
+    .form-group,
+    .input-group {
+        margin-bottom: 0;
+        border-bottom: 1px solid $silver;
 
-.auth-form-wrapper .form-control {
-  border: 0;
-  box-shadow: 0 0 0;
-  border-radius: 0;
-  background: transparent;
-  color: #555555;
-  padding: 7px 0;
-  font-weight: bold;
-  height: auto;
-}
+        .input-group-addon {
+            color: $text;
+            border: 0;
+            background: none;
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    .login-group-checkbox {
+        padding: 5px 0 5px 12px;
+    }
 
-.auth-form-wrapper .form-control::-webkit-input-placeholder {
-  color: #999999;
-}
-
-.auth-form-wrapper .form-control:-moz-placeholder,
-.auth-form-wrapper .form-control::-moz-placeholder,
-.auth-form-wrapper .form-control:-ms-input-placeholder {
-  color: #999999;
-}
-
-.auth-form-wrapper .form-group,
-.auth-form-wrapper .input-group {
-  margin-bottom: 0;
-  border-bottom: 1px solid #bbbbbb;
-}
-
-.auth-form-wrapper .input-group-addon {
-  color: #999999;
-  border: 0;
-  background: none;
-}
-
-.auth-form-wrapper .form-group:last-child,
-.auth-form-wrapper .input-group:last-child {
-  border-bottom: 0;
-}
-
-.login-group {
-  color: #999999;
-  min-width: 250px;
-}
-
-.login-group-checkbox {
-  padding: 5px 0 5px 12px;
-}
-
-/*=== 5. Login Button ===*/
-.auth-form-wrapper button {
-  color: $white;
-  transition: all ease-in-out 500ms;
-}
-
-.auth-form-wrapper button:hover {
-  color: #999999;
-}
-
-.auth-form-wrapper button.clicked {
-  color: #999999;
-}
-
-.auth-form-wrapper button.clicked:hover {
-  transform: none;
-}
-
-.auth-form-wrapper button.clicked.success {
-  color: #2ecc71;
-}
-
-.auth-form-wrapper button.clicked.error {
-  color: #e74c3c;
 }
 
 @media(min-width: 970px) {
-
-  .social {
-    margin-left: 10px;
-  }
+    .social {
+        margin-left: 10px;
+    }
 }
+
+@media screen and (min-width: $screen-xlg) {
+    .search {
+        min-width: 520px;
+    }
+}
+
+@media screen and (min-width: $screen-lg) and (max-width: $screen-xlg - 1) {
+    .search {
+        min-width: 500px;
+    }
+}
+
+@media screen and (min-width: $screen-md) and (max-width: $screen-lg - 1) {
+    .search {
+        min-width: 380px;
+    }
+}
+
+@media screen and (min-width: $screen-sm) and (max-width: $screen-md - 1) {
+    .search {
+        width: 190px;
+    }
+}
+
